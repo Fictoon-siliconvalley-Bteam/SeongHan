@@ -17,7 +17,9 @@ import torch
 import torch.multiprocessing as mp
 from tqdm import tqdm
 
-from . import srgb_profile, StyleTransfer, WebInterface
+from __init__ import srgb_profile
+from style_transfer import StyleTransfer
+from web_interface import WebInterface
 
 
 def prof_to_prof(image, src_prof, dst_prof, **kwargs):
@@ -152,8 +154,8 @@ def main():
         default_types = StyleTransfer.stylize.__annotations__
         return {'default': defaults[arg], 'type': default_types[arg]}
 
-    p.add_argument('content', type=str, help='the content image')
-    p.add_argument('styles', type=str, nargs='+', metavar='style', help='the style images')
+    # p.add_argument('content', type=str, help='the content image')
+    # p.add_argument('styles', type=str, nargs='+', metavar='style', help='the style images')
     p.add_argument('--output', '-o', type=str, default='out.png',
                    help='the output image')
     p.add_argument('--style-weights', '-sw', type=float, nargs='+', default=None,
@@ -201,8 +203,8 @@ def main():
 
     args = p.parse_args()
 
-    content_img = load_image(args.content, args.proof)
-    style_imgs = [load_image(img, args.proof) for img in args.styles]
+    content_img = load_image("test1.jpg")
+    style_imgs = [load_image("test2.png")]
 
     image_type = 'pil'
     if Path(args.output).suffix.lower() in {'.tif', '.tiff'}:

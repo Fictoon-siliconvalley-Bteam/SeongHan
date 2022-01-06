@@ -15,8 +15,11 @@ def upload():
 def upload_process():
     if request.method == 'POST':
         f = request.files['files']
-        f.save('./uploads/'+secure_filename(f.filename))
+        f2 = request.files['files2']
+        f.save('./Fictoon/style-transfer-pytorch/style_transfer/'+secure_filename(f.filename))
+        f2.save('./Fictoon/style-transfer-pytorch/style_transfer/' + secure_filename(f2.filename))
         return '파일 업로드 완료'
+
 
 
 

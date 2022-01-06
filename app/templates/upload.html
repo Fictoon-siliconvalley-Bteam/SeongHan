@@ -3,9 +3,15 @@
 <form action="http://127.0.0.1:80/uploader"
       method="POST"
       enctype="multipart/form-data">
-    <input type="file" name="files" />
+
+    첫번째 이미지를 넣어주세요 <input type="file" name="files" />
+    두번째 이미지를 넣어주세요 <input type="file" name="files2" />
     <input type="submit" />
-    <h1>TEST 입니다. 실행이 될수도 있고, 403 에러가 뜰수도 있어요</h1>
+</form>
+<form action="http://127.0.0.1:80/showimage"
+      method="POST"
+      enctype="multipart/form-data">
+      <input type="submit" name ="사진 보기">
 </form>
 </body>
 </html>
